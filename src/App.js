@@ -1,26 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider } from '@material-ui/styles';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import PirateTheme from './themes/PirateTheme';
+import { ToastProvider } from 'react-toast-notifications';
+import useStyles from './themes/theme';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App () {
+
+  const classes = useStyles();
+
+    return (
+      <ThemeProvider theme={PirateTheme}>
+        <ToastProvider placement={'bottom-center'}>
+          <Router>
+            <Route path="/" exact>
+            </Route>
+          </Router>
+        </ToastProvider>
+      </ThemeProvider>
+    );
 }
-
-export default App;
